@@ -1,0 +1,6 @@
+@import 'variables';
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+header {
+	border-bottom: 1px solid $gray-500;
+}
