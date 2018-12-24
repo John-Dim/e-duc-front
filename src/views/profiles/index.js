@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import UserProfileTabs from './components/UserProfileTabs';
+import UserProfileTabs from 'components/UserProfileTabs';
 
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getProfile } from './actions';
 import { isEmpty } from 'lodash';
+import { connect } from 'react-redux';
+import { getProfile } from './_actions';
+import { withRouter } from 'react-router-dom';
 
 class UserProfile extends Component {
 

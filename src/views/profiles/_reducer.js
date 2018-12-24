@@ -1,4 +1,4 @@
-import TYPES from './types';
+import TYPES from './_types';
 
 export default (state= {}, {type, payload}) => {
 	switch(type) {

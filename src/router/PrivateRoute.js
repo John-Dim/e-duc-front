@@ -6,12 +6,11 @@ import {isEmpty} from 'lodash';
 
 class PrivateRoute extends Component {
 	render() {
-		const { path, component, user } = this.props;
+		const { path, component, auth } = this.props;
 
 		let content;
-		// if (isEmpty(user)) {
-		if (false) {
-			content = <Redirect to='/sign_up'/>;
+		if (!auth.token) {
+			content = <Redirect to='/signup'/>;
 		} else {
 			content = <Route path={path} component={component} />;
 		}
@@ -21,10 +20,10 @@ class PrivateRoute extends Component {
 }
 
 const mapStateToProps = (state) => {
-	const {user} = state;
+	const {auth} = state;
 
 	return {
-		user
+		auth
 	}
 }
 

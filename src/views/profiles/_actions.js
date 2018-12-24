@@ -1,4 +1,4 @@
-import TYPES from './types' 
+import TYPES from './_types' 
 import api from '../../api';
 
 export const getProfile = profileId => dispatch => {
