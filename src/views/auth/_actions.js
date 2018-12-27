@@ -11,7 +11,7 @@ export const userSignUp = params => dispatch => {
 	axios.post('/signup', params).then(res => {
 		const token = res.data.token;
 		cookies.set('token', token, {expires: moment().add(20, 'days').toDate()});
-
+		debugger
 		dispatch({
 			type: TYPES.USER_SIGN_UP.SUCCESS, 
 			payload: {
@@ -39,5 +39,5 @@ export const userSignIn = params => dispatch => {
 
 export const userSignOut = () => {
 	cookies.remove('token');
-	return { type: TYPES.SIGN_OUT }
+	return { type: TYPES.USER_SIGN_OUT }
 };

@@ -5,7 +5,6 @@ export const getUser = () => dispatch => {
 	dispatch({type: USER_TYPES.GET_USER.START});
 
 	axios.get('/me').then(res => {
-		debugger
 		dispatch({
 			type: USER_TYPES.GET_USER.SUCCESS, 
 			payload: {

@@ -21,7 +21,6 @@ class SignIn extends Component {
 				    <Formik
 				      initialValues={{ email: '', password: '' }}
 				      onSubmit={(values, { setSubmitting }) => {
-				      	debugger
 				      	this.props.userSignIn(values)
 				      }}
 				    >

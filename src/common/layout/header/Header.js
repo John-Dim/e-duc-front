@@ -18,11 +18,11 @@ class Header extends Component {
       		<Button color="link">
 	      		<i className="fas fa-comments"></i>
       		</Button>
-      		<Button color="link" className="ml-3">
+      		<Link to={`users/${this.props.user._id}`} color="link" className="ml-3">
       			<i className="fas fa-user"></i>
-      			<span> Giannis </span>
-      		</Button>
-      		<Button color="link" onClick={ () => this.props.userSignOut()  }>
+      			<span> {this.props.user.name} </span>
+      		</Link>
+      		<Button color="link" onClick={ () => this.props.userSignOut() }>
 	      		<i className="fas fa-sign-out-alt"></i>
       		</Button>
       	</div>
@@ -54,7 +54,7 @@ class Header extends Component {
 	      		E-duc
 	      	</h3>
 		      { 
-		      	isEmpty(this.props.user) 
+		      	isEmpty(this.props.token) 
 		      		? 
 		      			this.renderUnSignedInUserContent() 
 		      		: this.renderSignedInUserContent() 
@@ -67,6 +67,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		token: state.auth.token,
 		user: state.user
 	}
 }

@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import PrivateRoute from 'router/PrivateRoute';
-import Header from 'components/layout/header/Header'
+import Header from 'common/layout/header/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getUser } from 'store/actions/user';
 
 import authRoutes from 'views/auth/_routes';
+import profileRoutes from 'views/profiles/_routes';
 
-const combinedRoutes = [...authRoutes];
+const combinedRoutes = [
+	...authRoutes,
+	...profileRoutes
+];
 
 class App extends Component {
 
 	componentDidMount() {
 		if (this.props.token) {
+			this.props.getUser();
+		}
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!prevProps.token && this.props.token) {
 			this.props.getUser();
 		}
 	}
