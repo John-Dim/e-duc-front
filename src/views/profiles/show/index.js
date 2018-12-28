@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserProfileTabs from '../components/UserProfileTabs';
+import ProfileTabs from './components/ProfileTabs';
 
 import { isEmpty } from 'lodash';
 import { connect } from 'react-redux';
@@ -33,7 +33,7 @@ class Profile extends Component {
               </button>
             </div>
             <div>
-              <UserProfileTabs />
+              <ProfileTabs profile={this.props.profile}/>
             </div>
           </div>
         </div>

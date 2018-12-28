@@ -19,7 +19,10 @@ class SignIn extends Component {
 					<Col sm={{size: 4, offset: 4}}>
 						Sign In
 				    <Formik
-				      initialValues={{ email: '', password: '' }}
+				      initialValues={{ 
+				      	email: '',
+				      	password: '' 
+				      }}
 				      onSubmit={(values, { setSubmitting }) => {
 				      	this.props.userSignIn(values)
 				      }}

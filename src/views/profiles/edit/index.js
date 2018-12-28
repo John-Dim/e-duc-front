@@ -13,14 +13,12 @@ class UserEdit extends Component {
 			return false;
 		}
 
-		const { name, surname } = this.props.user;
-
 		return(
 			<Container>
 				<Row>
 					<Col sm="4">
 						<Formik
-							initialValues={{name, surname}}
+							initialValues={this.props.user}
 				      onSubmit={(values, { setSubmitting }) => {
 				      	this.props.editUser(this.props.user._id, values)
 				      }}
@@ -31,25 +29,25 @@ class UserEdit extends Component {
 				    			return(
           					<form onSubmit={handleSubmit}>
 										  <div className="form-group">
-										    <label>Name</label>
-										    <input 
+										    <label>Age</label>
+										    <input
 										    	type="text" 
-										    	name="name"
+										    	name="age"
 										    	className="form-control" 
-										    	placeholder="Enter Name"
-										    	value={values.name}
+										    	placeholder="Enter Age"
+										    	value={values.age}
 										    	onChange={handleChange}
 										    />
 										 	</div>
 
 										  <div className="form-group">
-										    <label>Surname</label>
-										    <input 
+										    <label>Διαμονή</label>
+										    <input
 										    	type="text" 
-										    	name="surname"
+										    	name="livesAt"
 										    	className="form-control" 
-										    	placeholder="Enter Surname"
-										    	value={values.surname}
+										    	placeholder="Enter location"
+										    	value={values.livesAt}
 										    	onChange={handleChange}
 										    />
 										 	</div>

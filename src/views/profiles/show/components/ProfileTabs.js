@@ -3,7 +3,7 @@ import Posts from './Posts'
 import About from './About'
 import Groups from './Groups'
 
-class UserProfileTabs extends Component {
+class ProfileTabs extends Component {
 	state = {
 		activeTab: 'posts'
 	}
@@ -16,7 +16,7 @@ class UserProfileTabs extends Component {
 
 	renderAbout() {
 		return(
-			<About/>
+			<About profile={this.props.profile} />
 		);
 	}
 
@@ -80,4 +80,4 @@ class UserProfileTabs extends Component {
 
 const tabs = ['posts', 'about', 'groups', 'articles'];
 
-export default UserProfileTabs;
+export default ProfileTabs;

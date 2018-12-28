@@ -3,13 +3,13 @@ import Profile from 'views/profiles/show';
 
 const routes = [
 	{
-		component: Profile,
-		path: '/users/:id',
+		component: UserEdit,
+		path: '/users/:id/edit',
 		private: true
 	},
 	{
-		component: UserEdit,
-		path: '/users/:id/edit',
+		component: Profile,
+		path: '/users/:id',
 		private: true
 	}
 ];

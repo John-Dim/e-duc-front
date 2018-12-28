@@ -8,51 +8,12 @@ import { compose } from 'redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { userSignUp } from './_actions';
 
+import {  specialityOptions , 
+				  fieldOptions, 
+				  institutionOptions
+				} from 'utils/constants';
+
 class SignUp extends Component {
-	static specialityOptions = [
-		{
-			value: 'student',
-			label: 'Student'
-		},
-		{
-			value: 'university_student',
-			label: 'University student'
-		},
-		{
-			value: 'professor',
-			label: 'Professor'
-		}
-	];
-
-	static scientificFieldOptions = [
-		{
-			value: 'software_engineering',
-			label: 'Πληροφορική'
-		},
-		{
-			value: 'mathematics',
-			label: 'Μαθηματικό'
-		},
-		{
-			value: 'physics',
-			label: 'Φυσικό'
-		}
-	];
-
-	static scientificInstitutionOptions = [
-		{
-			value: 'pireus',
-			label: 'Πανεπιστήμιο Πειραιά'
-		},
-		{
-			value: 'ekpa',
-			label: 'ΕΚΠΑ'
-		},
-		{
-			value: 'ioannina',
-			label: 'Πανεπιστήμιο Ιωαννίνων'
-		}
-	];
 
 	render() {
 		if (this.props.token) {
@@ -69,15 +30,15 @@ class SignUp extends Component {
 				      	name: '', 
 				      	surname: '',
 				      	speciality: '',
-				      	scientificField: '',
-				      	scientificInstitution: '',
+				      	field: '',
+				      	institution: '',
 				      	email: '', 
 				      	password: ''
 				      }}
 				      onSubmit={(values, { setSubmitting }) => {
 				      	values.speciality =  values.speciality.value;
-				      	values.scientificField =  values.scientificField.value;
-				      	values.scientificInstitution =  values.scientificInstitution.value;
+				      	values.field =  values.field.value;
+				      	values.institution =  values.institution.value;
 
 				      	this.props.userSignUp(values)
 				      }}
@@ -119,7 +80,7 @@ class SignUp extends Component {
 									 		<label>Speciality</label>
 									 		<Select
 									 			value={ values.speciality }
-									 			options={SignUp.specialityOptions}
+									 			options={specialityOptions}
 									 			onChange={ option => setFieldValue('speciality', option)}
 									 			placeholder="Select Speciality"
 									 		>
@@ -129,9 +90,9 @@ class SignUp extends Component {
 									 	<div className="form-group">
 									 		<label>Scientific Field</label>
 									 		<Select
-									 			value={ values.scientificField }
-									 			options={SignUp.scientificFieldOptions}
-									 			onChange={ option => setFieldValue('scientificField', option)}
+									 			value={ values.field }
+									 			options={fieldOptions}
+									 			onChange={ option => setFieldValue('field', option)}
 									 			placeholder="Select Scientific Field"
 									 		>
 									 		</Select>
@@ -140,9 +101,9 @@ class SignUp extends Component {
 									 	<div className="form-group">
 									 		<label>Scientific Institution</label>
 									 		<Select
-									 			value={ values.scientificInstitution }
-									 			options={SignUp.scientificInstitutionOptions}
-									 			onChange={ option => setFieldValue('scientificInstitution', option)}
+									 			value={ values.institution }
+									 			options={institutionOptions}
+									 			onChange={ option => setFieldValue('institution', option)}
 									 			placeholder="Select Scientific Institution"
 									 		>
 									 		</Select>
