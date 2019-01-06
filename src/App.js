@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PrivateRoute from 'router/PrivateRoute';
-import Header from 'common/layout/header/Header'
+import Header from 'components/layout/header/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { connect } from 'react-redux';

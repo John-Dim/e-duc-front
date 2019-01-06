@@ -4,78 +4,78 @@ import About from './About'
 import Groups from './Groups'
 
 class ProfileTabs extends Component {
-	state = {
-		activeTab: 'posts'
-	}
+  state = {
+    activeTab: 'posts'
+  }
 
-	renderPosts() {
-		return(
-			<Posts/>
-		);
-	}
+  renderPosts() {
+    return(
+      <Posts profile={this.props.profile}/>
+    );
+  }
 
-	renderAbout() {
-		return(
-			<About profile={this.props.profile} />
-		);
-	}
+  renderAbout() {
+    return(
+      <About profile={this.props.profile} />
+    );
+  }
 
-	renderGroups() {
-		return(
-			<Groups/>
-		)
-	}
+  renderGroups() {
+    return(
+      <Groups/>
+    )
+  }
 
-	renderArticles() {
-		return(
-			<h3>
-				Articles
-			</h3>
-		)
-	}
+  renderArticles() {
+    return(
+      <h3>
+        Articles
+      </h3>
+    )
+  }
 
 
-	renderActiveTab() {
-		switch(this.state.activeTab) {
-			case 'posts':
-				return this.renderPosts();
-			case 'about':
-				return this.renderAbout();
-			case 'groups':
-				return this.renderGroups();
-			case 'articles':
-				return this.renderArticles();
-			default:
-				return this.renderPosts();
-		}
-	}
+  renderActiveTab() {
+    switch(this.state.activeTab) {
+      case 'posts':
+        return this.renderPosts();
+      case 'about':
+        return this.renderAbout();
+      case 'groups':
+        return this.renderGroups();
+      case 'articles':
+        return this.renderArticles();
+      default:
+        return this.renderPosts();
+    }
+  }
 
-	renderTabsButtons() {
-		const el = tabs.map((tab, idx) => (
-			<div 
-				className={`tab btn ${tab === this.state.activeTab ? 'btn-primary' : 'btn-light'}`}
-				onClick={()=> this.setState({activeTab: tab})}
-				key={idx}
-			>
-				{tab.charAt(0).toUpperCase() + tab.slice(1)}
-			</div>
-		))
+  renderTabsButtons() {
+    const el = tabs.map((tab, idx) => (
+      <div 
+        className={`tab btn ${tab === this.state.activeTab ? 'btn-primary' : 'btn-light'}`}
+        onClick={()=> this.setState({activeTab: tab})}
+        key={idx}
+      >
+        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+      </div>
+    ))
 
-		return el;
-	}
+    return el;
+  }
 
-	render() {
-		return(			
-     	<div className="user-tabs card ">
-     		<div className="tabs-buttons border-bottom d-flex justify-content-between">
-     			{this.renderTabsButtons()}
-     		</div>
-     		<div className="active-tab p-3">
-        	{this.renderActiveTab()}
+  render() {
+    return(     
+      <div className="user-tabs card ">
+        <div className="tabs-buttons border-bottom d-flex justify-content-between">
+          {this.renderTabsButtons()}
         </div>
-     	</div>
-		)
-	}
+        <div className="active-tab p-3">
+          {this.renderActiveTab()}
+        </div>
+      </div>
+    )
+  }
 }
 
 const tabs = ['posts', 'about', 'groups', 'articles'];

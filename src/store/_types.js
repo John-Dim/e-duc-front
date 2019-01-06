@@ -5,4 +5,8 @@ export const USER_TYPES = {
   USER_SIGN_OUT: 'USER_SIGN_OUT'
 }
 
+export const POSTS_TYPES = {
+  ...asyncTypes('CREATE_POST'),
+  ...asyncTypes('GET_POSTS')
+}
 

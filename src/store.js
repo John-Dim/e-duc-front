@@ -1,15 +1,19 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+
+import auth from 'views/auth/_reducer';
+import user from 'store/reducers/user';
+import profile from 'views/profiles/_reducer';
+import posts from 'store/reducers/posts';
+
 import { composeWithDevTools } from 'redux-devtools-extension';
-import authReducer from 'views/auth/_reducer';
 import thunk from 'redux-thunk';
-import userReducer from 'store/reducers/user';
-import profileReducer from 'views/profiles/_reducer';
 
 const rootReducer = combineReducers(
-	{ auth: authReducer,
-	  user: userReducer,
-	  profile: profileReducer
-	});
+  { auth,
+    user,
+    profile,
+    posts
+  });
 
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
