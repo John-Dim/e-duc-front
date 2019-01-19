@@ -6,13 +6,13 @@ import {isEmpty} from 'lodash';
 
 class PrivateRoute extends Component {
 	render() {
-		const { path, component, auth } = this.props;
+		const { path, component, auth, exact} = this.props;
 
 		let content;
 		if (!auth.token) {
 			content = <Redirect to='/signup'/>;
 		} else {
-			content = <Route path={path} component={component} />;
+			content = <Route path={path} component={component} exact={exact} />;
 		}
 
 		return content;
