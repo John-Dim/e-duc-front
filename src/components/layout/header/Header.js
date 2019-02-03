@@ -1,45 +1,46 @@
 import React, { Component, Fragment } from 'react';
-import { Button } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userSignOut } from 'views/auth/_actions';
+import { userSignOut } from 'store/actions/auth';
 import { isEmpty } from 'lodash';
 
 class Header extends Component {
 
   renderSignedInUserContent() {
     return (
-      <Fragment>
+      <div className="header-actions d-flex align-items-center">
         <div>
-          <input className="form-control" type="text" placeholder="Αναζήτηση"/>
+          <i className="fas fa-envelope"/>
+          <div>Messages</div>
         </div>
         <div>
-          <Button color="link">
-            <i className="fas fa-comments"></i>
-          </Button>
-          <Link to={`users/${this.props.user._id}`} color="link" className="ml-3">
-            <i className="fas fa-user"></i>
-            <span> {this.props.user.name} </span>
-          </Link>
-          <Button color="link" onClick={ () => this.props.userSignOut() }>
-            <i className="fas fa-sign-out-alt"></i>
-          </Button>
+          <i className="fas fa-layer-group"></i>
+          <div>Groups</div>
         </div>
-      </Fragment>
+        <div>
+          <i className="fas fa-users"></i>
+          <div>Users</div>
+        </div>
+
+        <Link to={`/users/${this.props.user._id}`} className="username text-white pl-4">
+          {this.props.user.name}
+        </Link>
+      </div>
     )
   }
 
   renderUnSignedInUserContent() {
     return (
       <div className="d-flex align-items-center">
-        <Link to='/signup'>
+        <Link to='/signup' className="text-white">
           Sign Up
         </Link>
-        <div className="mx-2">
+        <div className="mx-2 text-white">
           /
         </div>
-        <Link to='/signin'>
+        <Link to='/signin' className="text-white">
           Sign In
         </Link>
       </div>
@@ -48,18 +49,24 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="mb-4">     
-        <div className="container d-flex justify-content-between align-items-center py-2">
-          <h3 className="font-weight-bold">
-            E-duc
-          </h3>
-          { 
-            isEmpty(this.props.token) 
-              ? 
-                this.renderUnSignedInUserContent() 
-              : this.renderSignedInUserContent() 
-          }
-        </div>
+      <header className="mb-3">
+        <Container>
+          <Row>
+            <Col className="d-flex justify-content-between py-2">
+              <div className="logo">
+                E - duc
+              </div>
+
+                { 
+                  isEmpty(this.props.token) 
+                    ? 
+                      this.renderUnSignedInUserContent() 
+                    : this.renderSignedInUserContent() 
+                }
+
+            </Col>
+          </Row>
+        </Container>
       </header>
     );
   }

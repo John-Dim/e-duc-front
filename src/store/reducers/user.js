@@ -1,5 +1,4 @@
-import { USER_TYPES } from 'store/_types';
-import AUTH_TYPES from 'views/auth/_types';
+import { USER_TYPES, AUTH_TYPES} from 'store/_types';
 
 const initialState = {
 	name: '',

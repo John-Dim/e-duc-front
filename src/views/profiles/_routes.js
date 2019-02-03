@@ -9,6 +9,11 @@ const routes = [
 	},
 	{
 		component: Profile,
+		path: '/users/:id/:mainTab?/:secondaryTab?',
+		private: true
+	},
+	{
+		component: Profile,
 		path: '/users/:id',
 		private: true
 	}

@@ -1,3 +1,27 @@
-//boostrap overrides
+$primary:       #1a82cb; // blue
+$secondary:     #5DFDCB; // green
+$red:           #EE6352; // guess
+
+$title-blue:     #389be7;
+$dark-blue:      #00476a;
+$body-bg:        #f3f3f3;
+$body-color:     #333;
+$border-color:   #dedede;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "red":        $red
+  ),
+  $theme-colors
+);
+
 $font-family-base: 'Open Sans', sans-serif;
-$font-weight-bold: 600; 
+
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            600;
+$font-weight-bolder:          700;
+

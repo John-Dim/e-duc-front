@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { getGroup } from 'views/groups/_actions';
+import { getGroup, followGroup } from 'views/groups/_actions';
 import { isEmpty } from 'lodash';
 
 class Group extends Component {
@@ -14,7 +15,7 @@ class Group extends Component {
 	}
 
 	render() {
-		const { group } = this.props;
+		const { group, followGroup } = this.props;
 
 		if (isEmpty(group)) return null;
 
@@ -22,23 +23,29 @@ class Group extends Component {
 			<Container>
 				<Row>
 					<Col xs="5" className="card p-3">
-						<dl class="row">
+						<dl className="row">
 
-						  <dt class="col-sm-3">Title:</dt>
-						  <dd class="col-sm-9">{ group.title }</dd>
+						  <dt className="col-sm-3">Title:</dt>
+						  <dd className="col-sm-9">{ group.title }</dd>
 
-						  <dt class="col-sm-3">Description:</dt>
-						  <dd class="col-sm-9">{ group.description }</dd>
+						  <dt className="col-sm-3">Description:</dt>
+						  <dd className="col-sm-9">{ group.description }</dd>
 
-						  <dt class="col-sm-3">Creator:</dt>
-						  <dd class="col-sm-9">{ group.creator.name }</dd>
+						  <dt className="col-sm-3">Creator:</dt>
+						  <dd className="col-sm-9">{ group.creator.name }</dd>
 
 						</dl>
 
-						<Link to={`/groups/${group._id}/edit`}>
-							Edit
-						</Link>
-
+						<div className='d-flex justify-content-between align-items-center'>
+							<Link to={`/groups/${group._id}/edit`}>
+								<Button color="primary">
+									Edit
+								</Button>
+							</Link>
+							<Button color="success" onClick={()=> followGroup(group._id)}>
+								Follow
+							</Button>
+						</div>
 					</Col>
 				</Row>
 			</Container>
@@ -50,7 +57,8 @@ const mapStateToProps = ({group}) => ({group})
 
 export default compose(
 		connect(mapStateToProps, {
-			getGroup
+			getGroup,
+			followGroup
 		}),
 		withRouter
 	)

@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Redirect, withRouter } from 'react-router-dom';
-import { userSignIn } from './_actions';
+import { userSignIn } from 'store/actions/auth';
 
 class SignIn extends Component {
 	render() {

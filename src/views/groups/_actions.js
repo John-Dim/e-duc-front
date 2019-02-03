@@ -44,3 +44,15 @@ export const getGroup = groupId => dispatch => {
 	}).catch(error => {debugger;});
 };
 
+export const followGroup = groupId => dispatch => {
+	dispatch({type: TYPES.FOLLOW_GROUP.START});
+
+	api.put(`/users/follow_group/${groupId}`).then(res => {
+		dispatch({
+			type: TYPES.FOLLOW_GROUP.SUCCESS, 
+			payload: {
+				group: res.data 
+			}
+		});
+	}).catch(error => {debugger;});
+}

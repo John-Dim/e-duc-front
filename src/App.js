@@ -9,11 +9,13 @@ import { getUser } from 'store/actions/user';
 import authRoutes from 'views/auth/_routes';
 import profileRoutes from 'views/profiles/_routes';
 import groupRoutes from 'views/groups/_routes';
+import adminRoute from 'views/admin/_routes';
 
 const combinedRoutes = [
 	...authRoutes,
 	...profileRoutes,
-	...groupRoutes
+	...groupRoutes,
+	adminRoute
 ];
 
 class App extends Component {

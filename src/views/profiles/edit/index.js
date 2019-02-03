@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { Formik } from 'formik';
 
 import { connect } from 'react-redux';
-import { editUser } from 'views/profiles/_actions';
+import { editUser } from 'store/actions/profile';
 
 class UserEdit extends Component {
 
